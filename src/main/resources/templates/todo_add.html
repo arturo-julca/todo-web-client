@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" th:href="@{/css/home.css}" />
+	<title>ToDos - Add ToDo</title>
+   
+</head>
+<body>
+<div class="container">
+    <div class="row">
+			<h1>Add ToDo</h1>
+		</div>
+    <div class="row">
+        <form class="form-horizontal" th:object="${toDo}" th:action="@{/todo/add}" method="post">
+            <div class="row">
+                <div class="col-sm-10">
+                    <input type="hidden" class="form-control" th:field="*{id}"/>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label">Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{name}" />
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label">Time:</label>
+                <div class="col-sm-10">
+                    <input type="datetime-local" class="form-control" th:field="*{time}" />
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label">Email:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{email}" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
