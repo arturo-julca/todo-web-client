@@ -31,6 +31,7 @@
 						<th>Name</th>
 						<th>Time</th>
 						<th>Email</th>
+						<th>Status</th>
 						<th>Edit</th>
 						<th>Delete</th>
 					</tr>
@@ -40,6 +41,7 @@
 						<td th:text="${toDo.name}" />
 						<td th:text ="${toDo.time}" />
 						<td th:text="${toDo.email}" />
+						<td th:text="${toDo.status}" />
 						<td><a class="pageLink" th:href="${'/todo/edit/' + toDo.id}">Edit</a></td>
 						<td><a class="pageLink" th:href="${'/todo/delete/' + toDo.id}">Delete</a></td>
 					</tr>

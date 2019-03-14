@@ -11,6 +11,7 @@ public class ToDo {
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime time;
 	private String email;
+	private String status;
 	
 	public ToDo() {		
 	}
@@ -46,10 +47,16 @@ public class ToDo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	
 	@Override
 	public String toString() {
-		return "ToDo [id=" + id + ", name=" + name + ", time=" + time + ", email=" + email + "]";
+		return "ToDo [id=" + id + ", name=" + name + ", time=" + time + ", email=" + email + ", status=" + status + "]";
 	}
 	
 }
