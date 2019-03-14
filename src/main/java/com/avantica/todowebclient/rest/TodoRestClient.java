@@ -2,6 +2,7 @@ package com.avantica.todowebclient.rest;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
+import com.avantica.todowebclient.model.AppToken;
 import com.avantica.todowebclient.model.ToDo;
 
 @Repository
@@ -20,8 +22,8 @@ public class TodoRestClient {
 	@Value("${reminder.server.url}")
 	private String SERVICE_URL;
 	
-	@Value("${auth.bearer.token}")
-	private String TOKEN;
+	@Autowired
+	private AppToken appToken;
 	
 	public List<ToDo> getAllToDos() {
 		RestTemplate restTemplate = new RestTemplate();
@@ -75,7 +77,7 @@ public class TodoRestClient {
 	private HttpEntity<?> getHttpEntity(ToDo toDo) {
     	HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.add("Authorization", "Bearer " + TOKEN);
+        headers.add("Authorization", "Bearer " + appToken.getValue());
         HttpEntity<?> entity;
         if(toDo!=null){
         	entity = new HttpEntity<>(toDo, headers);
