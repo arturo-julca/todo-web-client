@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" th:href="@{/css/style.css}" />
+	<link rel="stylesheet" th:href="@{/css/home.css}" />
+	<title>ToDos</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<h1>ToDos</h1>
+		</div>
+		<div class="row">
+			<div class="mt-5">
+				<a class="pageLink" th:href="@{/todo/add}">Add new ToDo</a>
+			</div>
+		</div>
+		<div class="row">
+		</div>
+		<div class="row">
+			<table
+				class="table table-striped table-bordered table-sm dataTables_wrapper dt-bootstrap"
+				style="width: 100%">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Time</th>
+						<th>Email</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="toDo : ${listToDos}">
+						<td th:text="${toDo.name}" />
+						<td th:text ="${toDo.time}" />
+						<td th:text="${toDo.email}" />
+						<td><a class="pageLink" th:href="${'/todo/edit/' + toDo.id}">Edit</a></td>
+						<td><a class="pageLink" th:href="${'/todo/delete/' + toDo.id}">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>		
+	</div>
+</body>
+</html>
